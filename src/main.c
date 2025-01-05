@@ -1,15 +1,16 @@
 #include "backend/setup.h"
 #include "backend/register.h"
-#include <cstdio>
+#include <stdio.h>
+#include <string.h>
 
-int main(char* argv[1], int argc) {
+int main(int argc, char* argv[1]) {
 
     if (argc < 2) {
         printf("Usage: fourm <command> [args]\n");
         return 1;
     }
 
-    if (argv[1] == "setup") {
+    if (strcmp(argv[1], "setup") == 0) {
         sqlite3 *db;
         int rc = sqlite3_open("fourm.db", &db);
         if (rc) {
@@ -19,7 +20,7 @@ int main(char* argv[1], int argc) {
         setup_fourm(db);
         sqlite3_close(db);
     }
-    else if (argv[1] == "register") {
+    else if (strcmp(argv[1], "register") == 0) {
         register_user(argv[2], argv[3]);
     }
     else {

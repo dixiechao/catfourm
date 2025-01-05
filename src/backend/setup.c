@@ -24,5 +24,5 @@ int setup_fourm(sqlite3 *db)
             printf("Table created successfully \n");
         }
     }
-    
+    return 0;
 }

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <sqlite3.h>
-#include <string.h>
 #include "register.h"
 
 int register_user(const char *username, const char *email) {
@@ -16,7 +15,7 @@ int register_user(const char *username, const char *email) {
     }
 
     // prepare the SQL statement
-    char *sql[256];
+    char sql[256];
     snprintf(sql, sizeof(sql), "INSERT INTO users (username, email) VALUES ('%s', '%s');", username, email);
 
     // execute the SQL statement
