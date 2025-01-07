@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -I./src/backend
-LDFLAGS = -lsqlite3
+LDFLAGS = -lsqlite3 -lmicrohttpd
 
 SRC_DIR = src
 OBJ_DIR = build/obj
@@ -19,8 +19,11 @@ $(EXECUTABLE): $(OBJECTS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)/backend
 	$(CC) $(CFLAGS) -c $< -o $@
-
+	$(info Put the contents of frontend into the same localtion as the executable)
 clean:
 	rm -rf build
 
-.PHONY: all clean
+frontend:
+	@cp -r src/frontend $(BIN_DIR)
+
+.PHONY: all clean frontend

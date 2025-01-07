@@ -1,5 +1,6 @@
 #include "backend/setup.h"
 #include "backend/register.h"
+#include "backend/http.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -24,6 +25,7 @@ int main(int argc, char* argv[1]) {
         register_user(argv[2], argv[3]);
     }
     else {
-        printf("Invalid command\n");
+        printf("Running Server! at localhost:8080\n");
+        start_http_server(8080);
     }
 }
